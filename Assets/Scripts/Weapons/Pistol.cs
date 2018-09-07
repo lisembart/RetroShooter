@@ -9,6 +9,7 @@ public class Pistol : MonoBehaviour
 	[Header("Weapon parameters")]
 	[SerializeField] private float pistolDamage;
 	[SerializeField] private float pistolRange;
+	[SerializeField] private GameObject bulletHole;
 
 	[Header("Ammo")]
 	[SerializeField] private int ammoAmount;
@@ -46,12 +47,12 @@ public class Pistol : MonoBehaviour
 	{
 		ammoText.text = ammoClipLeft + " / " + ammoLeft;
 
-		if(Input.GetButtonDown("Fire1"))
+		if(Input.GetButtonDown("Fire1") && !isReloading)
 		{
 			isShot = true;
 		}
 
-		if(Input.GetKeyDown(KeyCode.R))
+		if(Input.GetKeyDown(KeyCode.R) && !isReloading)
 		{
 			Reload();
 		}
@@ -59,12 +60,13 @@ public class Pistol : MonoBehaviour
 
 	void FixedUpdate() 
 	{
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
 		RaycastHit hit;
 
 		if(isShot && ammoClipLeft > 0 && !isReloading)
 		{
 			isShot = false;
+			DynamicCrosshair.spread += DynamicCrosshair.PISTOL_SHOOTING_SPREAD;
 			ammoClipLeft--;
 			audioSource.PlayOneShot(shotSound);
 			StartCoroutine("Shot");
@@ -72,6 +74,8 @@ public class Pistol : MonoBehaviour
 			{
 				Debug.Log("I've hited " + hit.collider.gameObject.name);
 				hit.collider.gameObject.SendMessage("Hit", pistolDamage, SendMessageOptions.DontRequireReceiver);
+				Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up,hit.normal));
+				Debug.Log("Instantianted");
 			}
 		} else if(isShot && ammoClipLeft <= 0 && !isReloading)
 		{
