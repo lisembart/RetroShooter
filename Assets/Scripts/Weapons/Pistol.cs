@@ -60,7 +60,9 @@ public class Pistol : MonoBehaviour
 
 	void FixedUpdate() 
 	{
-		Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
+		Vector2 bulletOffset = Random.insideUnitCircle * DynamicCrosshair.spread;
+		Vector3 randomTarget = new Vector3(Screen.width/2 + bulletOffset.x, Screen.height/2 + bulletOffset.y, 0);
+		Ray ray = Camera.main.ScreenPointToRay(randomTarget);
 		RaycastHit hit;
 
 		if(isShot && ammoClipLeft > 0 && !isReloading)
