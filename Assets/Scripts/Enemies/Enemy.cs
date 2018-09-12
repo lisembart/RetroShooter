@@ -1,29 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(FaceCamera))]
 public class Enemy : MonoBehaviour 
 {
-	public int health;
-	public bool canMeleeAttack;
-	public bool canShoot;
-	public float meleeDamage;
-	public float shootDamage;
+	public int maxHealth;
+	float currentHealth;
+	EnemyStates enemyStates;
+	NavMeshAgent navMeshAgent;
 
-	void Start () 
+	private void Start() 
 	{
-		
-	}
-	
-
-	void Update () 
-	{
-		
+		currentHealth = maxHealth;
+		enemyStates = GetComponent<EnemyStates>();
+		navMeshAgent = GetComponent<NavMeshAgent>();	
 	}
 
-	public void Hit(int damage)
+	private void Update() 
 	{
-		health = health - damage;
+		if(currentHealth <= 0)
+		{
+			enemyStates.enabled = false;
+			navMeshAgent.enabled = false;
+		}	
+	}
+
+	public void Hit(float damage)
+	{
+		currentHealth -= damage;
 	}
 }

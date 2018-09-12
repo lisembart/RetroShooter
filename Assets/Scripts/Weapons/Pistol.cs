@@ -74,8 +74,16 @@ public class Pistol : MonoBehaviour
 			StartCoroutine("Shot");
 			if(Physics.Raycast(ray, out hit, pistolRange))
 			{
-				Debug.Log("I've hited " + hit.collider.gameObject.name);
-				hit.collider.gameObject.SendMessage("Hit", pistolDamage, SendMessageOptions.DontRequireReceiver);
+				if(hit.transform.CompareTag("Enemy"))
+				{
+					Debug.Log("I've hited " + hit.collider.gameObject.name);
+					if(hit.collider.gameObject.GetComponent<EnemyStates>().currentState == hit.collider.gameObject.GetComponent<EnemyStates>().patrolState
+					|| hit.collider.gameObject.GetComponent<EnemyStates>().currentState == hit.collider.gameObject.GetComponent<EnemyStates>().alertState)
+					{
+						hit.collider.gameObject.SendMessage("HiddenShot", transform.parent.transform.position, SendMessageOptions.DontRequireReceiver);
+					}				
+					hit.collider.gameObject.SendMessage("Hit", pistolDamage, SendMessageOptions.DontRequireReceiver);
+				}
 				Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up,hit.normal));
 				Debug.Log("Instantianted");
 			}
