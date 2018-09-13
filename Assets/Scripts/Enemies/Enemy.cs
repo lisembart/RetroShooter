@@ -23,8 +23,13 @@ public class Enemy : MonoBehaviour
 		if(currentHealth <= 0)
 		{
 			enemyStates.enabled = false;
-			navMeshAgent.enabled = false;
+			navMeshAgent.enabled = false;			
 		}	
+	}
+
+	public float GetCurrentHealth()
+	{
+		return currentHealth;
 	}
 
 	public void Hit(float damage)

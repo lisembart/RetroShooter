@@ -6,11 +6,13 @@ public class EnemySoldier_Animatons : MonoBehaviour
 {
 	private Animator _animator;
 	private EnemyStates enemyStates;
+	private Enemy enemy;
 
 	void Start () 
 	{
 		_animator = GetComponent<Animator>();
 		enemyStates = GetComponent<EnemyStates>();
+		enemy = GetComponent<Enemy>();
 	}
 	
 
@@ -33,8 +35,14 @@ public class EnemySoldier_Animatons : MonoBehaviour
 		} else 
 		{
 			_animator.SetBool("Shooting", false);
-		}
+		}	
 
-		
+		if(enemy.GetCurrentHealth() <= 0)
+		{
+			_animator.SetBool("Dying", true);
+		} else 
+		{
+			_animator.SetBool("Dying", false);
+		}
 	}
 }
