@@ -29,6 +29,7 @@ public class Pistol : MonoBehaviour
 	public Sprite idlePistol;
 	public Sprite shot1Pistol, shot2Pistol, shot3Pistol, shot4Pistol;
 	bool isShot;
+	[SerializeField] private GameObject bloodSplat;
 
 	void Awake() 
 	{
@@ -76,6 +77,7 @@ public class Pistol : MonoBehaviour
 			{
 				if(hit.transform.CompareTag("Enemy"))
 				{
+					Instantiate(bloodSplat, hit.point, Quaternion.identity);
 					Debug.Log("I've hited " + hit.collider.gameObject.name);
 					if(hit.collider.gameObject.GetComponent<EnemyStates>().currentState == hit.collider.gameObject.GetComponent<EnemyStates>().patrolState
 					|| hit.collider.gameObject.GetComponent<EnemyStates>().currentState == hit.collider.gameObject.GetComponent<EnemyStates>().alertState)
@@ -83,9 +85,8 @@ public class Pistol : MonoBehaviour
 						hit.collider.gameObject.SendMessage("HiddenShot", transform.parent.transform.position, SendMessageOptions.DontRequireReceiver);
 					}				
 					hit.collider.gameObject.SendMessage("Hit", pistolDamage, SendMessageOptions.DontRequireReceiver);
-				}
-				Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up,hit.normal));
-				Debug.Log("Instantianted");
+				} 
+				//Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up,hit.normal));
 			}
 		} else if(isShot && ammoClipLeft <= 0 && !isReloading)
 		{
