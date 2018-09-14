@@ -72,6 +72,6 @@ public class AlertState : IEnemyAI
     {
         enemy.alertLookingForPlayer = true;
         enemy.navMeshAgent.destination = enemy.lastKnownPosition;
-        enemy.navMeshAgent.Resume();
+        enemy.navMeshAgent.isStopped = false;
     }
 }

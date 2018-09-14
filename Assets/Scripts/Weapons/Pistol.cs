@@ -38,9 +38,9 @@ public class Pistol : MonoBehaviour
 		ammoClipLeft = ammoClipSize;
 	}
 
-	void Start () 
+	void OnEnable () 
 	{
-		
+		isReloading = false;
 	}
 	
 
@@ -84,7 +84,7 @@ public class Pistol : MonoBehaviour
 					{
 						hit.collider.gameObject.SendMessage("HiddenShot", transform.parent.transform.position, SendMessageOptions.DontRequireReceiver);
 					}				
-					hit.collider.gameObject.SendMessage("Hit", pistolDamage, SendMessageOptions.DontRequireReceiver);
+					hit.collider.gameObject.SendMessage("AddDamage", pistolDamage, SendMessageOptions.DontRequireReceiver);
 				} 
 				//Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up,hit.normal));
 			}

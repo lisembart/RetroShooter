@@ -63,7 +63,7 @@ public class PatrolState : IEnemyAI
 	void Patrol()
 	{
 		enemy.navMeshAgent.destination = enemy.waypoints[nextWayPoint].position;
-		enemy.navMeshAgent.Resume();
+		enemy.navMeshAgent.isStopped = false;
 
 		if(enemy.navMeshAgent.remainingDistance <= enemy.navMeshAgent.stoppingDistance && !enemy.navMeshAgent.pathPending)
 		{

@@ -59,15 +59,15 @@ public class ChaseState : IEnemyAI
     void Chase()
     {
         enemy.navMeshAgent.destination = enemy.chaseTarget.position;
-        enemy.navMeshAgent.Resume();
+        enemy.navMeshAgent.isStopped = false;
 
         if(enemy.navMeshAgent.remainingDistance <= enemy.attackRange && enemy.onlyMelee)
         {
-            enemy.navMeshAgent.Stop();
+            enemy.navMeshAgent.isStopped = true;
             ToAttackState();
         } else if(enemy.navMeshAgent.remainingDistance <= enemy.shootRange && !enemy.onlyMelee)
         {
-            enemy.navMeshAgent.Stop();
+            enemy.navMeshAgent.isStopped = true;
             ToAttackState();
         }
     }

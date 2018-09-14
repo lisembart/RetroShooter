@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
 		return currentHealth;
 	}
 
-	public void Hit(float damage)
+	public void AddDamage(float damage)
 	{
 		currentHealth -= damage;
 
