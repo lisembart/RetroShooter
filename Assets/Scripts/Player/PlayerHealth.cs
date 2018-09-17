@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class PlayerHealth : MonoBehaviour 
@@ -11,6 +12,9 @@ public class PlayerHealth : MonoBehaviour
 	[SerializeField] private AudioClip hitSound;
 	private AudioSource playerAudioSource;
 	[SerializeField] private FlashScreen flashScreen;
+
+	[Header("UI")]
+	[SerializeField] private Image healthBar;
 	
 	void Start () 
 	{
@@ -23,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
 		playerAudioSource.PlayOneShot(hitSound);
 		currentHealth -= damage;
 		flashScreen.FlashHit();
+		healthBar.fillAmount = currentHealth / maxHealth;
 	}
 	
 }

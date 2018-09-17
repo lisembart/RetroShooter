@@ -21,13 +21,13 @@ GameObject:
   - component: {fileID: 224500039707038340}
   - component: {fileID: 222278449104899350}
   - component: {fileID: 114626248610814452}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ShieldBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1410190247811210
 GameObject:
   m_ObjectHideFlags: 1
@@ -38,13 +38,13 @@ GameObject:
   - component: {fileID: 224176648767246304}
   - component: {fileID: 222201209873914308}
   - component: {fileID: 114358071872459444}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: CoverBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1481968228400364
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 224508286707692564}
   - component: {fileID: 222183732951718748}
   - component: {fileID: 114591929834588436}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 224362017934448682}
   - component: {fileID: 222878090050005892}
   - component: {fileID: 114135288421245098}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 224089461611496564}
   - component: {fileID: 222174022712750978}
   - component: {fileID: 114465257820308626}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 223687581449803892}
   - component: {fileID: 114634775653594682}
   - component: {fileID: 114037370247658558}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: EnemyCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1953342235537472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.07}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children:
   - {fileID: 224508286707692564}
@@ -452,6 +452,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 2.236}
+  m_AnchoredPosition: {x: 0, y: 3.27}
   m_SizeDelta: {x: 100, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}

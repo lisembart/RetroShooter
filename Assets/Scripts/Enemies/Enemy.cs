@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private Image shieldBar;
 	[SerializeField] private Image healthBar;
 	[SerializeField] private Text nameText;
+	private Rigidbody enemyRgbd;
 
 	private void Start() 
 	{
@@ -34,6 +35,7 @@ public class Enemy : MonoBehaviour
 
 		enemyStates = GetComponent<EnemyStates>();
 		navMeshAgent = GetComponent<NavMeshAgent>();	
+		enemyRgbd = GetComponent<Rigidbody>();
 	}
 
 	private void Update() 
@@ -53,6 +55,7 @@ public class Enemy : MonoBehaviour
 			UICanvas.SetActive(false);
 			enemyStates.enabled = false;
 			navMeshAgent.enabled = false;
+			enemyRgbd.isKinematic = true;
 		}	
 	}
 
@@ -63,8 +66,19 @@ public class Enemy : MonoBehaviour
 
 	public void AddDamage(float damage)
 	{
-		currentHealth -= damage;
+		if(currentCover > 0)
+		{
+			currentCover -= damage;
+		} else if(currentCover <= 0 && currentShield > 0)
+		{
+			currentShield -= damage;
+		} else if(currentCover <= 0 && currentShield <= 0 && currentHealth > 0)
+		{
+			currentHealth -= damage;
+		}
 
+		coversBar.fillAmount = currentCover / maxCovers;
+		shieldBar.fillAmount = currentShield / maxShield;
 		healthBar.fillAmount = currentHealth / maxHealth;
 	}
 

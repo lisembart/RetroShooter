@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerWeaponHiding : MonoBehaviour 
 {
 	[SerializeField] private GameObject weapons;
+	[SerializeField] private GameObject crosshair;
+	[SerializeField] private GameObject ammoBar;
 	public bool weaponHidden;
 
 	void Update () 
@@ -21,10 +23,14 @@ public class PlayerWeaponHiding : MonoBehaviour
 		{
 			weaponHidden = false;
 			weapons.SetActive(true);
+			crosshair.SetActive(true);
+			ammoBar.SetActive(true);
 		} else 
 		{
 			weaponHidden = true;
 			weapons.SetActive(false);
+			crosshair.SetActive(false);
+			ammoBar.SetActive(false);
 		}
 	}
 }
