@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
 	private NavMeshAgent navMeshAgent;
 
 	[Header("UI")]
+	public bool showingBars = false;
 	[SerializeField] private GameObject UICanvas;
 	[SerializeField] private Image coversBar;
 	[SerializeField] private Image shieldBar;
@@ -38,6 +39,14 @@ public class Enemy : MonoBehaviour
 	private void Update() 
 	{
 		nameText.text = name;
+		
+		if(showingBars)
+		{
+			UICanvas.SetActive(true);
+		} else 
+		{
+			UICanvas.SetActive(false);
+		}
 
 		if(currentHealth <= 0)
 		{
@@ -57,5 +66,10 @@ public class Enemy : MonoBehaviour
 		currentHealth -= damage;
 
 		healthBar.fillAmount = currentHealth / maxHealth;
+	}
+
+	public void SetBars(bool value)
+	{
+		showingBars = value;
 	}
 }

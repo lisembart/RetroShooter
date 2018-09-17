@@ -372,7 +372,7 @@ Transform:
   - {fileID: 1842949258}
   - {fileID: 1510993056}
   m_Father: {fileID: 221747302}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &62813341
 MonoBehaviour:
@@ -427,7 +427,7 @@ RectTransform:
   - {fileID: 519747312}
   - {fileID: 875164534}
   m_Father: {fileID: 221747302}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -813,6 +813,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1667962904}
+  - {fileID: 403633106}
   - {fileID: 62813340}
   - {fileID: 489579753}
   - {fileID: 91636478}
@@ -1013,6 +1014,59 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 56324848}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &403633105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 403633106}
+  - component: {fileID: 403633107}
+  - component: {fileID: 403633108}
+  m_Layer: 0
+  m_Name: EnemyBarsTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &403633106
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403633105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 27.87}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 221747302}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &403633107
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403633105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.22, z: 55.39}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &403633108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403633105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c386b7955431f9e46a53acebb9703754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &465033307
 Prefab:
   m_ObjectHideFlags: 0
@@ -1109,6 +1163,14 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410190247811210, guid: 87327310e7b170743ac743a691bfad49, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259427451132144, guid: 87327310e7b170743ac743a691bfad49, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87327310e7b170743ac743a691bfad49, type: 2}
@@ -1338,7 +1400,7 @@ Transform:
   m_Children:
   - {fileID: 41703731}
   m_Father: {fileID: 221747302}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &496240801
 GameObject:
@@ -2074,6 +2136,7 @@ MonoBehaviour:
   currentCover: 0
   maxShield: 0
   currentShield: 0
+  showingBars: 0
   UICanvas: {fileID: 679885477}
   coversBar: {fileID: 885991289}
   shieldBar: {fileID: 2100334779}
@@ -2448,6 +2511,7 @@ GameObject:
   - component: {fileID: 1218106592}
   - component: {fileID: 1218106595}
   - component: {fileID: 1218106594}
+  - component: {fileID: 1218106593}
   m_Layer: 10
   m_Name: EnemyTank
   m_TagString: Enemy
@@ -2565,6 +2629,7 @@ MonoBehaviour:
   currentCover: 0
   maxShield: 0
   currentShield: 0
+  showingBars: 0
   UICanvas: {fileID: 1827260239}
   coversBar: {fileID: 862008624}
   shieldBar: {fileID: 1383104404}
@@ -2631,6 +2696,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &1218106593
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218106584}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &1218106594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3372,6 +3452,7 @@ MonoBehaviour:
   dialogue:
     name: BOY
     sentences:
+    - PRESS 'E' TO START CONVERSATION
     - 'Hey, what are ya doing here ? '
     - 'I asked you a question, what the hell are ya doing here ? '
 --- !u!135 &1724371856

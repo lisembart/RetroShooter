@@ -15,9 +15,8 @@ public class PlayerDialogueController : MonoBehaviour
 	private void OnTriggerEnter(Collider other) {
 		if(other.gameObject.tag == "NPC")
 		{
-			dialogueUI.SetActive(true);
-			Debug.Log("TRIGGER DIALOGUE");
-			other.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+			GameObject npc = other.gameObject;
+			TriggerDialogue(npc);
 		}
 	}
 
@@ -26,6 +25,13 @@ public class PlayerDialogueController : MonoBehaviour
 		{
 			dialogueUI.SetActive(false);
 		}
+	}
+
+	public void TriggerDialogue(GameObject npc)
+	{
+		dialogueUI.SetActive(true);
+		Debug.Log("TRIGGER DIALOGUE");
+		npc.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
 	}
 
 	private void Update() {
