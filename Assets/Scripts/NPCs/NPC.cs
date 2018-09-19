@@ -8,7 +8,7 @@ public class NPC : MonoBehaviour
 	[SerializeField] private string npcName;
 
 	[Header("UI")]
-	public bool showingBars = false;
+	public bool showingBars;
 	[SerializeField] private GameObject UICanvas;
 	[SerializeField] private Text nameText;
 
@@ -33,7 +33,22 @@ public class NPC : MonoBehaviour
 
 	public void SetBars(bool value)
 	{
-		Debug.Log("SETTING VALUE");
 		showingBars = value;
+	}
+
+	private void OnTriggerStay(Collider other) 
+	{
+		if(other.gameObject.tag == "Player")
+		{
+			other.gameObject.SendMessage("ShowDialogueNotification", SendMessageOptions.DontRequireReceiver);
+		}
+	}
+
+	private void OnTriggerExit(Collider other) 
+	{
+		if(other.gameObject.tag == "Player")
+		{
+			other.gameObject.SendMessage("CleanNotifications", SendMessageOptions.DontRequireReceiver);			
+		}	
 	}
 }

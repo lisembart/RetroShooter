@@ -21,8 +21,14 @@ public class FlashScreen : MonoBehaviour
 		}
 	}
 	
-	public void FlashHit()
+	public void Flash()
 	{
 		flashScreen.color = new Color(1, 0, 0, 0.8f);
 	}
+
+	public void FlashMedpack()
+	{
+		flashScreen.color = new Color(0, 255, 0, 0.8f);
+	}
+
 }
