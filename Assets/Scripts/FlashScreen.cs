@@ -21,7 +21,7 @@ public class FlashScreen : MonoBehaviour
 		}
 	}
 	
-	public void Flash()
+	public void FlashHit()
 	{
 		flashScreen.color = new Color(1, 0, 0, 0.8f);
 	}

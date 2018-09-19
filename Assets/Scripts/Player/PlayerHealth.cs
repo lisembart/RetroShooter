@@ -11,8 +11,7 @@ public class PlayerHealth : MonoBehaviour
 	[SerializeField] float currentHealth;
 	[SerializeField] private AudioClip hitSound;
 	private AudioSource playerAudioSource;
-	[SerializeField] private FlashScreen flashScreenHit;
-	[SerializeField] private FlashScreen flashScreenHealth;
+	[SerializeField] private FlashScreen flashScreen;
 
 	[Header("UI")]
 	[SerializeField] private Image healthBar;
@@ -27,13 +26,13 @@ public class PlayerHealth : MonoBehaviour
 	{
 		playerAudioSource.PlayOneShot(hitSound);
 		currentHealth -= damage;
-		flashScreenHit.Flash();
+		flashScreen.FlashHit();
 		healthBar.fillAmount = currentHealth / maxHealth;
 	}
 
 	public void AddHealth(float healthToAdd)
 	{
-		flashScreenHealth.FlashMedpack();
+		flashScreen.FlashMedpack();
 		if(currentHealth < maxHealth)
 		{
 			currentHealth += healthToAdd;

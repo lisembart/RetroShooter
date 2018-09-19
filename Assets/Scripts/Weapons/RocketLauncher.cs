@@ -30,6 +30,7 @@ public class RocketLauncher : MonoBehaviour
 	bool isShot;
 
 	int rocketInChamber;
+
 	[SerializeField] private GameObject crosshair;
 
 	private void Awake() {

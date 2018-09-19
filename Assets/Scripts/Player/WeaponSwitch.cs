@@ -66,4 +66,11 @@ public class WeaponSwitch : MonoBehaviour
 			}
 		}
 	}
+
+	public void AddWeapon(Items_Weapons weaponType)
+	{
+		int weaponToAdd = (int)weaponType;
+		Debug.Log("WEAPON ADDING");
+		
+	}
 }
