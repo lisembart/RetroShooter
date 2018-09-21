@@ -9,9 +9,10 @@ public class WeaponSwitch : MonoBehaviour
 	public int initialWeapon;
 	int selectedWeapon;
 
-	[Header("Weapon Prefabs")]
-	public GameObject pistolPrefab;
-	public GameObject rocketLauncherPrefab;
+	[Header("Weapon Objects")]
+	public GameObject pistol;
+	public GameObject rocketLauncher;
+	public GameObject blaster;
 
 	void Awake() 
 	{
@@ -77,24 +78,38 @@ public class WeaponSwitch : MonoBehaviour
 		switch(weaponToAdd)
 		{
 			case 1:
-				if(gameObject.GetComponentInChildren<W_Pistol>() == null)
+				if(!weapons.Contains(pistol.transform))
 				{
-					GameObject pistol = Instantiate(pistolPrefab, transform);
-					pistol.transform.parent = gameObject.transform;
+					Debug.Log("Adding pistol");
+					weapons[selectedWeapon].gameObject.SetActive(false);
 					weapons.Add(pistol.transform);
-					selectedWeapon = 1;
-					break;
+				} else 
+				{
+					Debug.Log("I cant add any pistol");
+				}
+				break; 
+			case 2: 
+				if(!weapons.Contains(blaster.transform))
+				{
+					Debug.Log("Adding blaster");
+					weapons[selectedWeapon].gameObject.SetActive(false);
+					weapons.Add(blaster.transform);
+				} else 
+				{
+					Debug.Log("I cant add any blaster");
+				}
+				break; 							
+			case 5:
+				if(!weapons.Contains(rocketLauncher.transform))
+				{
+					Debug.Log("Adding rocket launcher");
+					weapons[selectedWeapon].gameObject.SetActive(false);
+					weapons.Add(rocketLauncher.transform);
+				} else 
+				{
+					Debug.Log("I cant add any rocket launcher");
 				}
 				break;
-			case 5:
-				if(gameObject.GetComponentInChildren<W_RocketLauncher>() == null)
-				{
-					GameObject rocketLauncher = Instantiate(rocketLauncherPrefab, transform);
-					rocketLauncher.transform.parent = gameObject.transform;
-					weapons.Add(rocketLauncher.transform);
-					break;
-				}
-				break;	
 		}
 	}
 }

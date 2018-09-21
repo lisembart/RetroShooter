@@ -7,6 +7,7 @@ public class DynamicCrosshair : MonoBehaviour
 	public static float spread;
 
 	public const int PISTOL_SHOOTING_SPREAD = 20;
+	public const int BLASTER_SHOOTING_SPREAD = 30;
 	public const int JUMP_SPREAD = 50;
 	public const int WALK_SPREAD = 10;
 	public const int RUN_SPREAD = 25;
