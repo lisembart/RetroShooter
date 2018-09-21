@@ -6,7 +6,7 @@ public class IT_Medpack : Item
 {
 	[SerializeField] private float healthToAdd;
 
-	public override void Action()
+	public void Action()
 	{
 		PlayerHealth player = FindObjectOfType<PlayerHealth>();
 		player.SendMessage("AddHealth", healthToAdd, SendMessageOptions.DontRequireReceiver);

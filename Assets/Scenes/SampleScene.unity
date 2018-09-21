@@ -757,6 +757,7 @@ RectTransform:
   - {fileID: 611514246}
   - {fileID: 478901965}
   - {fileID: 650013272}
+  - {fileID: 1808266183}
   m_Father: {fileID: 1871925695}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1068,7 +1069,7 @@ GameObject:
   - component: {fileID: 520198735}
   m_Layer: 0
   m_Name: Blaster
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1084,6 +1085,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f08e16d31962949b89f902de3f3a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: BLASTER
+  collectibleItem: 0
+  itemNameText: {fileID: 0}
   weaponType: 2
 --- !u!65 &520198736
 BoxCollider:
@@ -1095,7 +1099,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.64, z: 0.2}
+  m_Size: {x: 2, y: 2, z: 0.2}
   m_Center: {x: 0, y: -1.71, z: 0}
 --- !u!212 &520198737
 SpriteRenderer:
@@ -1819,6 +1823,11 @@ Prefab:
       propertyPath: m_Name
       value: RocketLauncher (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114178147281067628, guid: e5747de423a6fe344a438aa66dd45c50,
+        type: 2}
+      propertyPath: itemName
+      value: ROCKET LAUNCHER
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e5747de423a6fe344a438aa66dd45c50, type: 2}
   m_IsPrefabParent: 0
@@ -2452,8 +2461,9 @@ GameObject:
   - component: {fileID: 1411226524}
   - component: {fileID: 1411226526}
   - component: {fileID: 1411226525}
+  - component: {fileID: 1411226527}
   m_Layer: 0
-  m_Name: NPCBarsTrigger
+  m_Name: NPCItemsBarsTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2497,8 +2507,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.22, z: 5.6}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 1.22, z: 7.37}
+  m_Center: {x: 0, y: 0, z: 1.65}
+--- !u!114 &1411226527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1411226523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d01e70fb3414c44785718d19673858c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 1808266184}
 --- !u!1 &1458531122
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,6 +2839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f08e16d31962949b89f902de3f3a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: ROCKET LAUNCHER
+  collectibleItem: 0
+  itemNameText: {fileID: 0}
   weaponType: 0
 --- !u!212 &1608340998
 SpriteRenderer:
@@ -3294,6 +3319,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114178147281067628, guid: e5747de423a6fe344a438aa66dd45c50,
+        type: 2}
+      propertyPath: itemName
+      value: ROCKET LAUNCHER
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e5747de423a6fe344a438aa66dd45c50, type: 2}
   m_IsPrefabParent: 0
@@ -3365,6 +3395,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1808266182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1808266183}
+  - component: {fileID: 1808266185}
+  - component: {fileID: 1808266184}
+  m_Layer: 9
+  m_Name: NamesText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1808266183
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1808266182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 472836475}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -92}
+  m_SizeDelta: {x: 1000, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1808266184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1808266182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 85a1d42a2b5c74f40863f7b8c25c1ff6, type: 3}
+    m_FontSize: 52
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 89
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1808266185
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1808266182}
 --- !u!1 &1851073851 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1370049367749378, guid: b6a6326ff7a68a74f80670e27fb043fb,
@@ -3387,6 +3491,7 @@ GameObject:
   - component: {fileID: 1871925698}
   - component: {fileID: 1871925697}
   - component: {fileID: 1871925696}
+  - component: {fileID: 1871925704}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3618,6 +3723,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1871925704
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1871925694}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1888435636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3789,6 +3909,11 @@ Prefab:
     - target: {fileID: 4196609369174070, guid: a9679377c971b604b88c3d6c30266506, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114208121201492186, guid: a9679377c971b604b88c3d6c30266506,
+        type: 2}
+      propertyPath: itemName
+      value: Pistol
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9679377c971b604b88c3d6c30266506, type: 2}

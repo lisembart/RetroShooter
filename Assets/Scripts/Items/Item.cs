@@ -14,6 +14,10 @@ public abstract class Item : MonoBehaviour
 		
 	}
 	
+	public string GetItemName()
+	{
+		return itemName;
+	}
 
 	void Update () 
 	{
@@ -32,7 +36,10 @@ public abstract class Item : MonoBehaviour
 		}
 	}
 
-	public abstract void Action();
+	public virtual void Action()
+	{
+
+	}
 
 	private void OnTriggerEnter(Collider other) 
 	{

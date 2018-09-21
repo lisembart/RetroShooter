@@ -17,6 +17,10 @@ public class NPC : MonoBehaviour
 		
 	}
 	
+	public string GetNpcName()
+	{
+		return npcName;
+	}
 
 	void Update () 
 	{
