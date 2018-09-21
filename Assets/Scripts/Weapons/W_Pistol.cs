@@ -3,62 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(AudioSource))]
-public class Pistol : MonoBehaviour 
+public class W_Pistol : Weapons
 {
-	[Header("Weapon parameters")]
-	[SerializeField] private float pistolDamage;
-	[SerializeField] private float pistolRange;
-	[SerializeField] private GameObject bulletHole;
-
-	[Header("Ammo")]
-	[SerializeField] private int ammoAmount;
-	[SerializeField] private int ammoClipSize;
-	private int ammoLeft;
-	private int ammoClipLeft;
-	[SerializeField] private Text ammoText;
-	[SerializeField] private bool isReloading;
-
-	[Header("Sounds")]
-	public AudioClip shotSound;
-	public AudioClip reloadSound;
-	public AudioClip emptyGunSound;
-	private AudioSource audioSource;
-
 	[Header("Sprites for animation")]
 	public Sprite idlePistol;
 	public Sprite shot1Pistol, shot2Pistol, shot3Pistol, shot4Pistol;
-	bool isShot;
-	[SerializeField] private GameObject bloodSplat;
-
-	void Awake() 
-	{
-		audioSource = GetComponent<AudioSource>();
-		ammoLeft = ammoAmount;
-		ammoClipLeft = ammoClipSize;
-	}
-
-	void OnEnable () 
-	{
-		isReloading = false;
-	}
 	
-
-	void Update () 
-	{
-		ammoText.text = ammoClipLeft + " / " + ammoLeft;
-
-		if(Input.GetButtonDown("Fire1") && !isReloading)
-		{
-			isShot = true;
-		}
-
-		if(Input.GetKeyDown(KeyCode.R) && !isReloading)
-		{
-			Reload();
-		}
-	}
-
 	void FixedUpdate() 
 	{
 		Vector2 bulletOffset = Random.insideUnitCircle * DynamicCrosshair.spread;
@@ -72,8 +22,8 @@ public class Pistol : MonoBehaviour
 			DynamicCrosshair.spread += DynamicCrosshair.PISTOL_SHOOTING_SPREAD;
 			ammoClipLeft--;
 			audioSource.PlayOneShot(shotSound);
-			StartCoroutine("Shot");
-			if(Physics.Raycast(ray, out hit, pistolRange))
+			StartCoroutine("ShotAnimation");
+			if(Physics.Raycast(ray, out hit, weaponRange))
 			{
 				if(hit.transform.CompareTag("Enemy"))
 				{
@@ -84,7 +34,7 @@ public class Pistol : MonoBehaviour
 					{
 						hit.collider.gameObject.SendMessage("HiddenShot", transform.parent.transform.position, SendMessageOptions.DontRequireReceiver);
 					}				
-					hit.collider.gameObject.SendMessage("AddDamage", pistolDamage, SendMessageOptions.DontRequireReceiver);
+					hit.collider.gameObject.SendMessage("AddDamage", weaponDamage, SendMessageOptions.DontRequireReceiver);
 				} 
 				//Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up,hit.normal));
 			}
@@ -95,26 +45,7 @@ public class Pistol : MonoBehaviour
 		}
 	}
 
-	private void Reload()
-	{
-		int bulletsToReload = ammoClipSize - ammoClipLeft;
-		if(ammoLeft >= bulletsToReload)
-		{
-			StartCoroutine("ReloadTimer");
-			ammoLeft -= bulletsToReload;
-			ammoClipLeft = ammoClipSize;
-		} else if(ammoLeft < bulletsToReload && ammoLeft > 0)
-		{
-			StartCoroutine("ReloadTimer");
-			ammoClipLeft += ammoLeft;
-			ammoLeft = 0;
-		} else if(ammoLeft <= 0)
-		{
-			audioSource.PlayOneShot(emptyGunSound);
-		}
-	}
-
-	IEnumerator Shot()
+	IEnumerator ShotAnimation()
 	{
 		SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.sprite = shot1Pistol;
@@ -126,13 +57,5 @@ public class Pistol : MonoBehaviour
 		spriteRenderer.sprite = shot4Pistol;
 		yield return new WaitForSeconds(0.025f);
 		spriteRenderer.sprite = idlePistol;
-	}
-
-	IEnumerator ReloadTimer()
-	{
-		isReloading = true;
-		audioSource.PlayOneShot(reloadSound);
-		yield return new WaitForSeconds(2);
-		isReloading = false;
 	}
 }

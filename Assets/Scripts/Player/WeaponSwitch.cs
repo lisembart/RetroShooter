@@ -9,6 +9,10 @@ public class WeaponSwitch : MonoBehaviour
 	public int initialWeapon;
 	int selectedWeapon;
 
+	[Header("Weapon Prefabs")]
+	public GameObject pistolPrefab;
+	public GameObject rocketLauncherPrefab;
+
 	void Awake() 
 	{
 		if(autoFill)
@@ -70,7 +74,27 @@ public class WeaponSwitch : MonoBehaviour
 	public void AddWeapon(Items_Weapons weaponType)
 	{
 		int weaponToAdd = (int)weaponType;
-		Debug.Log("WEAPON ADDING");
-		
+		switch(weaponToAdd)
+		{
+			case 1:
+				if(gameObject.GetComponentInChildren<W_Pistol>() == null)
+				{
+					GameObject pistol = Instantiate(pistolPrefab, transform);
+					pistol.transform.parent = gameObject.transform;
+					weapons.Add(pistol.transform);
+					selectedWeapon = 1;
+					break;
+				}
+				break;
+			case 5:
+				if(gameObject.GetComponentInChildren<W_RocketLauncher>() == null)
+				{
+					GameObject rocketLauncher = Instantiate(rocketLauncherPrefab, transform);
+					rocketLauncher.transform.parent = gameObject.transform;
+					weapons.Add(rocketLauncher.transform);
+					break;
+				}
+				break;	
+		}
 	}
 }

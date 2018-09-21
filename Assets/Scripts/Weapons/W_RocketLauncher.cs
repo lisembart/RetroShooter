@@ -3,39 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RocketLauncher : MonoBehaviour 
+public class W_RocketLauncher : Weapons 
 {
+	[Header("Rocket Launcher Necessary Objects")]
 	public GameObject rocket;
 	public GameObject explosion;
 	public GameObject spawnPoint;
 	
-	public AudioClip shotSound;
-	public AudioClip reloadSound;
-	public AudioClip emptyGunSound;
+	[Header("Rocket Sounds")]
 	public AudioClip explosionSound;
 
+	[Header("Explosion parameters")]
 	public float rocketForce;
 	public float explosionRadius;
 	public float explosionDamage;
 	public LayerMask explosionLayerMask;
-
-	public Text ammoText;
-	public int rocketsAmount;
-	int rocketsLeft;
-
 	AudioSource audioSource;
 
 	bool isReloading;
 	bool isCharged = true;
-	bool isShot;
-
 	int rocketInChamber;
 
 	[SerializeField] private GameObject crosshair;
 
-	private void Awake() {
+	private void Awake() 
+	{
 		audioSource = GetComponent<AudioSource>();
-		rocketsLeft = rocketsAmount;
+		ammoLeft = ammoAmount;
 	}
 
 	void OnEnable () 
@@ -53,7 +47,7 @@ public class RocketLauncher : MonoBehaviour
 	void Update () 
 	{
 		rocketInChamber = isCharged ? 1 : 0;
-		ammoText.text = rocketInChamber + " / " + rocketsLeft;
+		ammoText.text = rocketInChamber + " / " + ammoLeft;
 
 		if(Input.GetButtonDown("Fire1") && isCharged && !isReloading)
 		{
@@ -76,18 +70,18 @@ public class RocketLauncher : MonoBehaviour
 
 	private void Reload()
 	{
-		if(rocketsLeft <= 0)
+		if(ammoLeft <= 0)
 		{
 			audioSource.PlayOneShot(emptyGunSound);
 		} else 
 		{
-			StartCoroutine("ReloadWeapon");
-			rocketsLeft--;
+			StartCoroutine("ReloadTimer");
+			ammoLeft--;
 			isCharged = true;
 		}
 	}
 
-	private IEnumerator ReloadWeapon()
+	private IEnumerator ReloadTimer()
 	{
 		isReloading = true;
 		audioSource.PlayOneShot(reloadSound);
