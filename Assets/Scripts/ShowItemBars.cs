@@ -48,7 +48,7 @@ public class ShowItemBars : MonoBehaviour
 
 	}
 
-	private void CleanText()
+	public void CleanText()
 	{
 		Debug.Log("CLEANUJE TEXT");
 		nameText.text = " ";

@@ -12,6 +12,7 @@ public class IT_Weapon : Item
 		{
 			WeaponSwitch weaponSwitch = other.gameObject.GetComponentInChildren<WeaponSwitch>();
 			weaponSwitch.SendMessage("AddWeapon", weaponType);
+			FindObjectOfType<ShowItemBars>().CleanText();
 			Destroy(gameObject);
 		}	
 	}
