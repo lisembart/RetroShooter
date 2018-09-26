@@ -15,4 +15,6 @@ public class E_Demon : MonoBehaviour
 	{
 		
 	}
+
+	
 }
