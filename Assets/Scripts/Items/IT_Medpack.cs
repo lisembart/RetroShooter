@@ -6,8 +6,10 @@ public class IT_Medpack : Item
 {
 	[SerializeField] private float healthToAdd;
 
-	public void Action()
+	public override void PickUp()
 	{
+		Notifications notifications = FindObjectOfType<Notifications>();
+		notifications.SendMessage("CleanNotifications", SendMessageOptions.DontRequireReceiver);
 		PlayerHealth player = FindObjectOfType<PlayerHealth>();
 		player.SendMessage("AddHealth", healthToAdd, SendMessageOptions.DontRequireReceiver);
 		Destroy(gameObject);

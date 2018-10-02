@@ -6,14 +6,9 @@ public class IT_Ammo : Item
 {
 	public int ammoToAdd; 
 
-	void Start () 
+	public override void PickUp()
 	{
-		
-	}
-	
-
-	void Update () 
-	{
-		
+		Debug.Log("Collecting ammo");
+		Destroy(gameObject);
 	}
 }

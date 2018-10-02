@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Lamp
   - Item
+  - Bomb
   layers:
   - Default
   - TransparentFX

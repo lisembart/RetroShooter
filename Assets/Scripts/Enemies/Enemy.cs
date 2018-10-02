@@ -66,6 +66,8 @@ public class Enemy : MonoBehaviour
 
 	public void AddDamage(float damage)
 	{
+		Debug.Log("AAAAA");
+
 		if(currentCover > 0)
 		{
 			currentCover -= damage;

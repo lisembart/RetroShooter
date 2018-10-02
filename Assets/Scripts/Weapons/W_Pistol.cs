@@ -33,9 +33,13 @@ public class W_Pistol : Weapons
 					|| hit.collider.gameObject.GetComponent<EnemyStates>().currentState == hit.collider.gameObject.GetComponent<EnemyStates>().alertState)
 					{
 						hit.collider.gameObject.SendMessage("HiddenShot", transform.parent.transform.position, SendMessageOptions.DontRequireReceiver);
-					}				
+					} 			
 					hit.collider.gameObject.SendMessage("AddDamage", weaponDamage, SendMessageOptions.DontRequireReceiver);
-				} 
+				} else if(hit.transform.CompareTag("Bomb"))
+				{
+					Debug.Log("BOMB");
+					hit.transform.SendMessage("Explode");
+				}
 				//Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up,hit.normal));
 			}
 		} else if(isShot && ammoClipLeft <= 0 && !isReloading)

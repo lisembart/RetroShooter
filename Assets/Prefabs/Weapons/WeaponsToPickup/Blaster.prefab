@@ -9,83 +9,71 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1852006073562990}
+  m_RootGameObject: {fileID: 1097235139135496}
   m_IsPrefabParent: 1
---- !u!1 &1852006073562990
+--- !u!1 &1097235139135496
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4193239089966892}
-  - component: {fileID: 212556841635620484}
-  - component: {fileID: 114965489175353246}
-  - component: {fileID: 114278968205021982}
-  - component: {fileID: 65390629282839762}
+  - component: {fileID: 4301706522078910}
+  - component: {fileID: 212810456833756884}
+  - component: {fileID: 65326168733968912}
+  - component: {fileID: 114047745707940256}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: Blaster
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4193239089966892
+--- !u!4 &4301706522078910
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1852006073562990}
+  m_GameObject: {fileID: 1097235139135496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.823, y: 3.0656116, z: -4.9170227}
+  m_LocalPosition: {x: -9.78, y: 3.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65390629282839762
+--- !u!65 &65326168733968912
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1852006073562990}
+  m_GameObject: {fileID: 1097235139135496}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.41, y: 0.69, z: 0.2}
-  m_Center: {x: 0, y: -1.85, z: 0}
---- !u!114 &114278968205021982
+  m_Size: {x: 2, y: 2, z: 0.2}
+  m_Center: {x: 0, y: -1.71, z: 0}
+--- !u!114 &114047745707940256
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1852006073562990}
+  m_GameObject: {fileID: 1097235139135496}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5f08e16d31962949b89f902de3f3a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: PISTOL
+  itemName: BLASTER
   collectibleItem: 0
-  weaponType: 1
---- !u!114 &114965489175353246
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1852006073562990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b30141d291f3b44bb99ee21411c0396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!212 &212556841635620484
+  weaponType: 2
+--- !u!212 &212810456833756884
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1852006073562990}
+  m_GameObject: {fileID: 1097235139135496}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -115,7 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0c0cd6d202f4c114089679efcf5590b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 04760db50b272c342a10684f6f49ecbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

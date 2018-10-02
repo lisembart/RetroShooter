@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Item : MonoBehaviour 
+public class Item : MonoBehaviour 
 {
 	[SerializeField] protected string itemName;
 	[SerializeField] private bool collectibleItem;
-	[SerializeField] private Text itemNameText;
 
 	void Start () 
 	{
@@ -19,33 +18,29 @@ public abstract class Item : MonoBehaviour
 		return itemName;
 	}
 
-	void Update () 
+	public virtual void PickUp()
 	{
-		itemNameText.text = itemName;
-	}
 
-	public void PickUp()
-	{
-		if(collectibleItem)
-		{
-			Debug.Log("Collecting item");
-			Destroy(gameObject);
-		} else 
-		{
-			Action();
-		}
 	}
 
 	public virtual void Action()
 	{
 
 	}
-
+	
 	private void OnTriggerEnter(Collider other) 
 	{
 		if(other.gameObject.tag == "Player")
 		{
-			PickUp();
-		}
+			other.gameObject.SendMessage("ShowItemNotification", itemName, SendMessageOptions.DontRequireReceiver);
+		}	
+	}
+
+	private void OnTriggerExit(Collider other) 
+	{
+		if(other.gameObject.tag == "Player")
+		{
+			other.gameObject.SendMessage("CleanNotifications", SendMessageOptions.DontRequireReceiver);
+		}	
 	}
 }
