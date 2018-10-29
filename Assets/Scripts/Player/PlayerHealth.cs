@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
 		playerAudioSource.PlayOneShot(hitSound);
 		currentHealth -= damage;
 		flashScreen.FlashHit();
-		healthBar.fillAmount = currentHealth / maxHealth;
+		UpdateHealthBar();
 	}
 
 	public void AddHealth(float healthToAdd)
@@ -36,7 +36,13 @@ public class PlayerHealth : MonoBehaviour
 		if(currentHealth < maxHealth)
 		{
 			currentHealth += healthToAdd;
+			UpdateHealthBar();
 		}
+	}
+
+	private void UpdateHealthBar()
+	{
+		healthBar.fillAmount = currentHealth / maxHealth;
 	}
 	
 }

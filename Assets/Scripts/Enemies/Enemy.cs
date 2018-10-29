@@ -17,14 +17,8 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private float currentShield;
 	private EnemyStates enemyStates;
 	private NavMeshAgent navMeshAgent;
+	[SerializeField] private bool isAlive;
 
-	[Header("UI")]
-	public bool showingBars = false;
-	[SerializeField] private GameObject UICanvas;
-	[SerializeField] private Image coversBar;
-	[SerializeField] private Image shieldBar;
-	[SerializeField] private Image healthBar;
-	[SerializeField] private Text nameText;
 	private Rigidbody enemyRgbd;
 
 	private void Start() 
@@ -40,23 +34,21 @@ public class Enemy : MonoBehaviour
 
 	private void Update() 
 	{
-		nameText.text = name;
-		
-		if(showingBars)
-		{
-			UICanvas.SetActive(true);
-		} else 
-		{
-			UICanvas.SetActive(false);
-		}
-
 		if(currentHealth <= 0)
 		{
-			UICanvas.SetActive(false);
+			isAlive = false;
 			enemyStates.enabled = false;
 			navMeshAgent.enabled = false;
 			enemyRgbd.isKinematic = true;
-		}	
+		} else 
+		{
+			isAlive = true;
+		}
+	}
+
+	public bool IsAlive()
+	{
+		return isAlive;
 	}
 
 	public float GetCurrentHealth()
@@ -64,10 +56,38 @@ public class Enemy : MonoBehaviour
 		return currentHealth;
 	}
 
+	public float GetMaxHealth()
+	{
+		return maxHealth;
+	}
+
+	public float GetCurrentCover()
+	{
+		return currentCover;
+	}
+
+	public float GetMaxCover()
+	{
+		return maxCovers;
+	}
+
+	public float GetCurrentShield()
+	{
+		return currentShield;
+	}
+
+	public float GetMaxShield()
+	{
+		return maxShield;
+	}	
+
+	public string GetName()
+	{
+		return name;
+	}
+
 	public void AddDamage(float damage)
 	{
-		Debug.Log("AAAAA");
-
 		if(currentCover > 0)
 		{
 			currentCover -= damage;
@@ -78,14 +98,5 @@ public class Enemy : MonoBehaviour
 		{
 			currentHealth -= damage;
 		}
-
-		coversBar.fillAmount = currentCover / maxCovers;
-		shieldBar.fillAmount = currentShield / maxShield;
-		healthBar.fillAmount = currentHealth / maxHealth;
-	}
-
-	public void SetBars(bool value)
-	{
-		showingBars = value;
 	}
 }

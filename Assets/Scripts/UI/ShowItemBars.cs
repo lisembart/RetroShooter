@@ -28,16 +28,10 @@ public class ShowItemBars : MonoBehaviour
 
 	private void OnTriggerExit(Collider col) 
 	{
-		if(col.gameObject.tag == "NPC")
+		if(col.gameObject.tag == "NPC" || col.gameObject.tag == "Item")
 		{
 			Debug.Log("NIE MA JUŻ NPCA");
 			npc = null;
-			CleanText();
-		}
-
-		if(col.gameObject.tag == "Item")
-		{
-			Debug.Log("NIE MA JUŻ ITEMA");			
 			item = null;
 			CleanText();
 		}

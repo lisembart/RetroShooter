@@ -5,11 +5,10 @@ using UnityEngine;
 public class D_Door : MonoBehaviour 
 {
 	public float speed;
-	public KeyCode openningKey;
 	public Vector3 endPosition;
 	Vector3 startPosition;
 	GameObject doors;
-	bool isOpen = false;
+	[SerializeField] private bool isOpen = false;
 	Animator animator;
 
 	private void Awake() 
@@ -21,29 +20,26 @@ public class D_Door : MonoBehaviour
 
 	private void OnTriggerStay(Collider other) 
 	{
-		if(other.CompareTag("Player"))
+		if(other.gameObject.tag == "Player")
 		{
-			other.gameObject.SendMessage("ShowDoorNotification", SendMessageOptions.DontRequireReceiver);
-			if(Input.GetKeyDown(openningKey))
-			{
-				StartCoroutine(SlideDoors());
-			}
-		} /*else if(other.CompareTag("Enemy"))
-		{
-			StartCoroutine(SlideDoors());
-		} */
+			StartCoroutine("SlideDoors", true);
+		} 
 	}
 
 	private void OnTriggerExit(Collider other) 
 	{
-		other.gameObject.SendMessage("CleanNotifications", SendMessageOptions.DontRequireReceiver);
+		if(other.gameObject.tag == "Player")
+		{
+			StartCoroutine("SlideDoors", false);
+		}	
 	}
 
-	IEnumerator SlideDoors()
+
+	IEnumerator SlideDoors(bool open)
 	{
 		Vector3 currentPos = doors.transform.position;
 		Vector3 destination = isOpen ? startPosition : endPosition;
-		isOpen = !isOpen;
+		isOpen = !isOpen;	
 		float t = 0f;
 		while(t < 1)
 		{
